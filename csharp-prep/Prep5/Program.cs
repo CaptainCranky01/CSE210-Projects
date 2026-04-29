@@ -13,7 +13,12 @@ class Program
         int dw_year;
         PromptUserBirthYear("Please enter the year you were born: ", out dw_year);
 
-        DisplayResult(dw_name, dw_favNum * dw_favNum, DateTime.Now.Year-dw_year);
+        DisplayResult(dw_name, SquareNumber(dw_favNum), DateTime.Now.Year-dw_year);
+    }
+
+    static int SquareNumber(int input)
+    {
+        return input * input;
     }
 
     static string PromptUserName(string prompt)
