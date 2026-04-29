@@ -40,7 +40,7 @@ class Program
                 dw_flag = false;
             } catch
             {
-                Console.WriteLine("Invalid Input! Please type Yes or No");
+                Console.WriteLine("Invalid Input! Please type a number between 1 aand 100");
             }
         }
         return dw_input;
