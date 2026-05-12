@@ -4,5 +4,6 @@
     "plaintext": false,
     "markdown": false,
     "csharp": false
-  }
+  },
+  "editor.acceptSuggestionOnCommitCharacter": false
 }
