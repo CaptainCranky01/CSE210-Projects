@@ -16,8 +16,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Random randomGen = new Random();
-        string[] prompts = [
+        Random dw_randomGen = new Random();
+        string[] dw_prompts = [
             "What was the highlight of your day?: ",
             "What is one thing you would like to have done differently today?: ",
             "How many goals did you work on today?: ",
@@ -25,73 +25,73 @@ class Program
             "What did you do for fun/entertainment today?: "
         ];
         
-        Journal journal = new Journal();
-        int command = 0;
+        Journal dw_journal = new Journal();
+        int dw_command = 0;
 
         Console.WriteLine("Welcome to your journal!");
 
-        while (command != 6)
+        while (dw_command != 6)
         {
             Console.WriteLine("\nList of commands:\n1: Write Entry\n2: Display\n3: Save\n4: Load\n5: Clear\n6: Exit");
-            command = GetCommand("Choose 1-5: ");
+            dw_command = GetCommand("Choose 1-5: ");
             Console.WriteLine();
 
-            if (command == 5)
+            if (dw_command == 5)
             {
                 if (Confirm($"Are you sure you want to clear your current journal?\ntrue/false"))
                 {
-                    journal._journalEntries.Clear();
+                    dw_journal._DW_journalEntries.Clear();
                 }
-            } else if (command == 4)
+            } else if (dw_command == 4)
             {
                 if (Confirm($"Are you sure you want to override your current journal?\ntrue/false"))
                 {
-                    journal._fileName = GetString("File Name: ");
-                    journal.LoadFile();
+                    dw_journal._DW_fileName = GetString("File Name: ");
+                    dw_journal.LoadFile();
                 }
-            } else if (command == 3)
+            } else if (dw_command == 3)
             {
-                journal._fileName = GetString("File Name: ");
+                dw_journal._DW_fileName = GetString("File Name: ");
 
-                if (Confirm($"Are you sure you want to save your current journal to {journal._fileName}?\ntrue/false"))
+                if (Confirm($"Are you sure you want to save your current journal to {dw_journal._DW_fileName}?\ntrue/false"))
                 {
-                    journal.SaveFile();
+                    dw_journal.SaveFile();
                 }
-            } else if (command == 2)
+            } else if (dw_command == 2)
             {
-                journal.Display();
-            } else if (command == 1)
+                dw_journal.Display();
+            } else if (dw_command == 1)
             {
-                string response;
-                string prompt;
+                string dw_response;
+                string dw_prompt;
 
                 do {
-                    prompt = prompts[randomGen.Next(1, prompts.Length)];
-                    response = GetString($"{prompt}\nType 'skip' to answer a different prompt\n");
-                } while (response == "skip");
+                    dw_prompt = dw_prompts[dw_randomGen.Next(1, dw_prompts.Length)];
+                    dw_response = GetString($"{dw_prompt}\nType 'skip' to answer a different prompt\n");
+                } while (dw_response == "skip");
 
-                journal.AddEntry(DateTime.Now, prompt, response);
+                dw_journal.AddEntry(DateTime.Now, dw_prompt, dw_response);
             }
         }
     }
 
     static bool Confirm(string prompt)
     {
-        bool confirm = false;
-        bool flag = true;
-        while (flag)
+        bool dw_confirm = false;
+        bool dw_flag = true;
+        while (dw_flag)
         {
             try
             {
                 Console.WriteLine(prompt);
-                confirm = bool.Parse(Console.ReadLine());
-                flag = false;
+                dw_confirm = bool.Parse(Console.ReadLine());
+                dw_flag = false;
             } catch (Exception e)
             {
                 Console.WriteLine("Invalid Command! Please input 'true' or 'false'.");
             }
         }
-        return confirm;
+        return dw_confirm;
     }
 
     static string GetString(string prompt)
@@ -102,24 +102,24 @@ class Program
 
     static int GetCommand(string prompt)
     {
-        int command = 0;
-        bool flag = true;
-        while (flag)
+        int dw_command = 0;
+        bool dw_flag = true;
+        while (dw_flag)
         {
             try
             {
                 Console.Write(prompt);
-                command = int.Parse(Console.ReadLine());
-                if (command <= 0 || command > 5)
+                dw_command = int.Parse(Console.ReadLine());
+                if (dw_command <= 0 || dw_command > 5)
                 {
                     throw new Exception();
                 }
-                flag = false;
+                dw_flag = false;
             } catch (Exception e)
             {
                 Console.WriteLine("Invalid Command! Please input an integer between 1 and 5.");
             }
         }
-        return command;
+        return dw_command;
     }
 }
