@@ -8,7 +8,7 @@ class Program
         char dw_letterGrade; // char cannot be null
         char? dw_plusMinus; // char? can be null
         string dw_passedMessage;
-        
+
         dw_percentage = GetFloat("What is your grade percentage? ");
 
         dw_passedMessage = dw_percentage >= 70 ? "Congratulations! You passed the class!" : "You need a C- or higher to pass. Keep trying! You can do it!";
@@ -18,16 +18,20 @@ class Program
         {
             dw_letterGrade = 'A';
             dw_plusMinus = dw_plusMinus == '+' ? null : dw_plusMinus;
-        } else if (dw_percentage >= 80)
+        }
+        else if (dw_percentage >= 80)
         {
             dw_letterGrade = 'B';
-        } else if (dw_percentage >= 70)
+        }
+        else if (dw_percentage >= 70)
         {
             dw_letterGrade = 'C';
-        } else if (dw_percentage >= 60)
+        }
+        else if (dw_percentage >= 60)
         {
             dw_letterGrade = 'D';
-        } else // dw_percentage < 60
+        }
+        else // dw_percentage < 60
         {
             dw_letterGrade = 'F';
             dw_plusMinus = null;
@@ -48,8 +52,10 @@ class Program
                 Console.Write(prompt);
                 dw_response = float.Parse(Console.ReadLine());
                 dw_flag = false;
-            } catch /*(Exception e)*/ {
-//                Console.WriteLine(e);
+            }
+            catch /*(Exception e)*/
+            {
+                //                Console.WriteLine(e);
                 Console.WriteLine("Invalid input! Please type a number.");
             }
         }
