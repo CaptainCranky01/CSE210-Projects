@@ -1,5 +1,15 @@
 using System;
 
+/*
+
+exceeding requirements:
+
+I added a scripture archive that is loaded from a text file which allows the user to choose a scripture to memorize
+I also made the hiding and displaying happen in one function and made it randomly pick a word that is still shown
+I also added punctuation that will not be hidden
+
+*/
+
 class Program {
 
     static ScriptureManager DW_sm = new ScriptureManager("ScriptureArchive.txt");
