@@ -2,37 +2,21 @@ using System;
 
 class Program {
     static MyUI DW_myUI = new MyUI();
-    static BreathingAct breathingAct = new BreathingAct();
-    static ReflectingAct reflectingAct = new ReflectingAct();
-    static ListingAct listingAct = new ListingAct();
+    static List<Activity> activities = new List<Activity>();
 
     static void Main(string[] args) {
+        activities.Add(new BreathingAct());
+        activities.Add(new ReflectingAct());
+        activities.Add(new ListingAct());
+        
         int DW_choice;
+        Activity activity;
 
         Console.WriteLine("Welcome to the Mindfulness Program!");
         while((DW_choice = DisplayMenu()) != 0) {
             Console.Clear();
-            switch (DW_choice) {
-                case 1:
-                    breathingAct.Spinner(5, 500);
-                    break;
-                case 2:
-                    Console.Write("Loading Activity: ");
-                    reflectingAct.Spinner(5, 50);
-                    Console.WriteLine("Done!");
-                    break;
-                case 3:
-                    Console.Write("Loading Activity: ");
-                    listingAct.Spinner(5, 500);
-                    Console.WriteLine("Done!");
-                    break;
-                case 4:
-                    Console.Write("Seconds left: ");
-                    breathingAct.CountDown(10);
-                    Console.WriteLine();
-                    break;
-            }
-            Console.Clear();
+            activity = activities[DW_choice];
+            activity.Spinner(10, 500);
         }
         Console.Clear();
         Console.WriteLine("Thank you for using the Mindfulness Program!");
